@@ -77,13 +77,27 @@ def tetrade(num):
         total+=dic[i]
         print(i,dic[i])
     print(total)
+# двоичное в шестнадцатеричное
+def binToSixteen(num):
+    total=''
+    dic={'0000':'0','0001':'1','0010':'2','0011':'3','0100':'4','0101':'5','0110':'6','0111':'7','1000':'8','1001':'9','1010':'A','1011':'B','1100':'C','1101':'D','1110':'E','1111':'F'}
+    difa = len(num)%4
+    if difa!=0:
+        num='0'*(4-difa)+num
+    while num!='':
+        print(num[0:4],':',dic[num[0:4]])
+        total=total+dic[num[0:4]]
+        num=num[4:]
+    print(total)
 while True:
     num = input()
     cc = input()
-    ch=input()
+    ch=input('1 повышение до 10сс, 2 если метод триад, 0 если понижение из 10сс, 3 если из 2сс в 16сс ')
     if ch=='1':
         transform10cc(num, cc)
     elif ch=='2':
         triad(num)
+    elif ch=='3':
+        binToSixteen(num)
     else:
         print(bina(num,cc))

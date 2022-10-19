@@ -25,8 +25,32 @@ def codify(num):
                 num='0'+num
                 dif=dif-1
         return(num)
+    elif num<32767 and num>-32767:
+        if num<0:
+# прямой код отрицательного числа:
+            num=str(bin(num))[3:]
+            numb=''
+            dif=15-len(num)
+            while dif!=0:
+                num='0'+num
+                dif=dif-1
+# получение обратного кода:
+            for i in num:
+                numb+=indict[i]
+            num='1'+numb
+# довод до дополнительного кода:
+            num=int(num,2)+1
+            num=bin(num)[2:]
+        else:
+# прямой код положительного числа:
+            num=str(bin(num))[2:]
+            dif=16-len(num)
+            while dif!=0:
+                num='0'+num
+                dif=dif-1
+        return(num)
     else:
         return 'Число невозможно представить в прямом коде с помощью 8 бит'
 while True:
-    number = int(input('Введите число в диапазоне [-127;127]: '))
+    number = int(input('Введите число в диапазоне [-127;127] если 8 бит; [-32767;32767] если 16 бит: '))
     print(codify(number))

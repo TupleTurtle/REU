@@ -19,8 +19,17 @@ def summator(num1,num2):
         else:
             summ0=0
             summs=str(summ)+summs
-    return str(summ0)+'I'+summs
+    if summs[0]!='0':
+        print('Первоначально:',summs)
+        nnumba=''
+        indict={'0':'1','1':'0'}
+        for i in summs:
+            nnumba+=indict[i]
+        summs=nnumba
+    return '['+str(summ0)+']'+' '+summs
 while True:
     num1=input()
     num2=input()
-    print(summator(num1,num2))
+    numba = summator(num1,num2)
+    print(numba)
+
